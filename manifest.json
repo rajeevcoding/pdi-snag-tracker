@@ -1,0 +1,10 @@
+{
+  "name": "PDI Snag Tracker",
+  "short_name": "Snag Tracker",
+  "description": "Track pre-delivery inspection findings for Flat H-802",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": []
+}
