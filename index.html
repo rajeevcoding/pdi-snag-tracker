@@ -12,9 +12,12 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{--bg:#fff;--bg2:#f8fafc;--bg3:#f1f5f9;--border:#e2e8f0;--text:#0f172a;--text2:#334155;--text3:#64748b;--text4:#94a3b8;--blue:#3b82f6;--red:#ef4444;--amber:#f59e0b;--green:#10b981;--purple:#8b5cf6;--orange:#f97316;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,sans-serif}
 body{background:var(--bg);color:var(--text);overscroll-behavior:none}
+@media(min-width:769px){body{background:var(--bg3)}}
 input,button,textarea{font-family:inherit;font-size:inherit}
 button{cursor:pointer;border:none;background:none}
 .container{display:flex;flex-direction:column;height:100dvh;width:100%;max-width:430px;margin:0 auto;background:var(--bg);overflow:hidden}
+@media(min-width:769px){.container{max-width:720px;border-left:1px solid var(--border);border-right:1px solid var(--border);box-shadow:0 0 40px rgba(0,0,0,.06)}}
+@media(min-width:1100px){.container{max-width:900px}}
 .topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);flex-shrink:0}
 .topbar h1{font-size:18px;font-weight:700}
 .topbar p{font-size:12px;color:var(--text4)}
@@ -28,10 +31,14 @@ button{cursor:pointer;border:none;background:none}
 .tab-btn:not(.active){color:var(--text4)}
 .card{background:var(--bg2);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:12px}
 .badge{font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;white-space:nowrap;display:inline-block}
-.snag-card{display:block;width:100%;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--border);text-align:left}
+.snag-card{display:block;width:100%;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--border);text-align:left;transition:background .1s}
 .snag-card:active{background:var(--bg2)}
-.room-card{display:block;width:100%;padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;text-align:left;margin-bottom:8px}
+@media(min-width:769px){.snag-card:hover{background:var(--bg2)}}
+.room-card{display:block;width:100%;padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;text-align:left;margin-bottom:8px;transition:background .1s}
 .room-card:active{background:var(--bg3)}
+@media(min-width:769px){.room-card:hover{background:var(--bg3)}}
+.rooms-grid{display:flex;flex-direction:column}
+@media(min-width:769px){.rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
 .search-box{display:flex;align-items:center;background:var(--bg3);border-radius:8px;padding:0 10px;gap:6px;flex:1}
 .search-box input{flex:1;border:none;background:none;outline:none;font-size:14px;padding:10px 0;color:var(--text)}
 .filter-row{display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
@@ -46,26 +53,61 @@ button{cursor:pointer;border:none;background:none}
 .progress-fill{height:100%;border-radius:2px;transition:width .3s}
 .section-label{font-size:11px;font-weight:600;color:var(--text4);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .snag-img{width:100%;border-radius:8px;object-fit:cover;background:var(--bg3);cursor:pointer}
+.detail-top{display:flex;flex-direction:column}
+@media(min-width:769px){.detail-top{flex-direction:row;gap:16px}.detail-top .snag-img{width:280px;flex-shrink:0;max-height:360px}.detail-top .detail-info{flex:1}}
+.dash-grid{display:flex;flex-direction:column}
+@media(min-width:769px){.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dash-grid>.card{margin-bottom:0}}
 .user-photos{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .user-photo-thumb{width:72px;height:72px;border-radius:8px;object-fit:cover;background:var(--bg3)}
 .photo-add-btn{width:72px;height:72px;border-radius:8px;border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--text4);font-size:24px;background:var(--bg2)}
 .photo-add-btn:active{background:var(--bg3)}
 .lightbox{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:100;display:flex;align-items:center;justify-content:center}
-.lightbox img{max-width:95%;max-height:90%;object-fit:contain;border-radius:4px}
+.lightbox img,lightbox video{max-width:95%;max-height:90%;object-fit:contain;border-radius:4px}
 .lightbox button{position:absolute;top:12px;right:12px;color:#fff;font-size:28px;padding:8px}
 .export-text{font-size:12px;line-height:1.6;color:var(--text2);white-space:pre-wrap;word-break:break-word;padding:16px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)}
 .icon-btn{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.login-wrap{display:flex;align-items:center;justify-content:center;height:100dvh;padding:24px}
+.login-card{width:100%;max-width:360px;padding:32px;border-radius:16px;border:1px solid var(--border);background:var(--bg)}
+.login-card h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.login-card p{font-size:13px;color:var(--text3);margin-bottom:20px}
+.login-card input{display:block;width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);font-size:14px;margin-bottom:10px;outline:none}
+.login-card input:focus{border-color:var(--blue)}
+.login-card .btn{display:block;width:100%;padding:12px;border-radius:8px;background:var(--blue);color:#fff;font-size:15px;font-weight:600;border:none;cursor:pointer}
+.login-card .err{color:var(--red);font-size:12px;margin-bottom:8px}
+.spinner{display:flex;align-items:center;justify-content:center;height:100dvh;color:var(--text3);font-size:14px}
 </style>
 </head>
 <body>
 <div id="root"></div>
+
+<!-- Firebase SDK (compat for script-tag usage) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.9/babel.min.js"></script>
+
 <script type="text/babel">
 const {useState,useEffect,useCallback,useMemo,useRef}=React;
 
-// ─── DATA ─────────────────────────────────────────────────
+// ━━━ FIREBASE CONFIG ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 👇 PASTE YOUR FIREBASE CONFIG HERE (see SETUP.md step 5)
+const firebaseConfig = {
+    apiKey: "AIzaSyDRfD_BJzLBBnB4O-9PVGY-gqgBCxpMFdw",
+    authDomain: "pdi-snag-tracker.firebaseapp.com",
+    projectId: "pdi-snag-tracker",
+    storageBucket: "pdi-snag-tracker.firebasestorage.app",
+    messagingSenderId: "241351976995",
+    appId: "1:241351976995:web:6127d51951875aa604a996"
+  };
+
+firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth();
+const db=firebase.firestore();
+
+// ━━━ SEED DATA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const LOCATIONS=["Entrance Lobby","Guest Bedroom","Guest Bathroom","Living Room","Living Room Balcony","Kitchen","Alley","Common Bedroom","Common Bathroom","Master Bedroom","Master Bathroom","Dry Balcony"];
 const COMPONENTS=["Door","Wall","Window","Electric","Floor","Ceiling","Plumbing","Counter","Overview"];
 const STATUSES=["Open","In Progress","Fixed","Accepted","Disputed"];
@@ -169,57 +211,70 @@ const RAW=[
 ];
 
 function buildSeed(){
-  return RAW.map(r=>({id:r[0],location:LOCATIONS[r[1]],component:COMPONENTS[r[2]],analysis:r[3],remedy:r[4]||"",severity:SEVERITIES[r[5]],status:r[5]===4?"Accepted":"Open",dateReported:"2026-06-07",dateFixed:null,dateVerified:null,notes:[]}));
+  return RAW.map(r=>({id:r[0],location:LOCATIONS[r[1]],component:COMPONENTS[r[2]],analysis:r[3],remedy:r[4]||"",severity:SEVERITIES[r[5]],status:r[5]===4?"Accepted":"Open",dateReported:"2026-06-07",dateFixed:null,dateVerified:null,notes:[],photos:[]}));
 }
 
-// ─── IndexedDB for user photos ────────────────────────────
-const DB_NAME="pdi-photos";const DB_VER=1;const STORE="photos";
-function openDB(){
-  return new Promise((res,rej)=>{
-    const req=indexedDB.open(DB_NAME,DB_VER);
-    req.onupgradeneeded=()=>{req.result.createObjectStore(STORE)};
-    req.onsuccess=()=>res(req.result);
-    req.onerror=()=>rej(req.error);
-  });
-}
-async function savePhoto(snagId,photoId,dataUrl){
-  const db=await openDB();
-  return new Promise((res,rej)=>{
-    const tx=db.transaction(STORE,"readwrite");
-    tx.objectStore(STORE).put(dataUrl,`${snagId}-${photoId}`);
-    tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error);
-  });
-}
-async function getPhotos(snagId){
-  const db=await openDB();
-  return new Promise((res,rej)=>{
-    const tx=db.transaction(STORE,"readonly");
-    const store=tx.objectStore(STORE);
-    const req=store.getAllKeys();
-    req.onsuccess=()=>{
-      const keys=req.result.filter(k=>k.startsWith(snagId+"-"));
-      const photos=[];
-      let done=0;
-      if(keys.length===0)return res([]);
-      keys.forEach(k=>{
-        const r2=store.get(k);
-        r2.onsuccess=()=>{photos.push({key:k,data:r2.result});done++;if(done===keys.length)res(photos.sort((a,b)=>a.key.localeCompare(b.key)))};
-        r2.onerror=()=>{done++;if(done===keys.length)res(photos)};
-      });
-    };
-    req.onerror=()=>rej(req.error);
-  });
-}
-async function deletePhoto(key){
-  const db=await openDB();
-  return new Promise((res,rej)=>{
-    const tx=db.transaction(STORE,"readwrite");
-    tx.objectStore(STORE).delete(key);
-    tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error);
-  });
+// ━━━ SVG ICONS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const Ic={
+  dashboard:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>,
+  list:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="18" r="1"/></svg>,
+  rooms:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+  back:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>,
+  search:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
+  share:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>,
+  filter:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>,
+  edit:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>,
+  camera:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>,
+  x:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
+  logout:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>,
+};
+
+// ━━━ LOGIN SCREEN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function LoginScreen(){
+  const [email,setEmail]=useState("");
+  const [pass,setPass]=useState("");
+  const [err,setErr]=useState("");
+  const [loading,setLoading]=useState(false);
+  const handleLogin=async()=>{
+    setErr("");setLoading(true);
+    try{await auth.signInWithEmailAndPassword(email,pass)}
+    catch(e){setErr(e.message);setLoading(false)}
+  };
+  return(
+    <div className="login-wrap">
+      <div className="login-card">
+        <h1>PDI Snag Tracker</h1>
+        <p>Flat H-802, 7 PD</p>
+        {err&&<p className="err">{err}</p>}
+        <input type="email" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} autoComplete="email"/>
+        <input type="password" placeholder="Password" value={pass} onChange={e=>setPass(e.target.value)} onKeyDown={e=>{if(e.key==="Enter")handleLogin()}} autoComplete="current-password"/>
+        <button className="btn" onClick={handleLogin} disabled={loading}>{loading?"Signing in...":"Sign In"}</button>
+      </div>
+    </div>
+  );
 }
 
-function compressImage(dataUrl,maxDim=800,quality=0.7){
+// ━━━ FIRESTORE HELPERS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const snagCol=()=>db.collection("snags");
+
+async function seedIfNeeded(){
+  const snap=await snagCol().limit(1).get();
+  if(!snap.empty)return false;
+  const seed=buildSeed();
+  const batch=db.batch();
+  seed.forEach(s=>{batch.set(snagCol().doc(String(s.id)),s)});
+  await batch.commit();
+  return true;
+}
+
+async function updateSnagDoc(id,changes){
+  await snagCol().doc(String(id)).update(changes);
+}
+
+// ━━━ PHOTO HELPERS (stored as base64 in Firestore — no Storage needed) ━━━
+const mediaCol=()=>db.collection("media");
+
+function compressImage(dataUrl,maxDim=600,quality=0.6){
   return new Promise(res=>{
     const img=new Image();
     img.onload=()=>{
@@ -233,29 +288,39 @@ function compressImage(dataUrl,maxDim=800,quality=0.7){
   });
 }
 
-// ─── SVG Icons ────────────────────────────────────────────
-const Ic={
-  dashboard:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>,
-  list:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="18" r="1"/></svg>,
-  rooms:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
-  back:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>,
-  search:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
-  share:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>,
-  filter:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>,
-  edit:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>,
-  camera:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>,
-  x:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
-  trash:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>,
-};
+async function uploadMedia(snagId,file){
+  const dataUrl=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)});
+  const compressed=await compressImage(dataUrl,600,0.6);
+  const ts=Date.now();
+  const docId=`${snagId}_${ts}`;
+  await mediaCol().doc(docId).set({snagId,data:compressed,ts});
+  const snap=await snagCol().doc(String(snagId)).get();
+  const photos=snap.data()?.photos||[];
+  photos.push({ts,docId});
+  await snagCol().doc(String(snagId)).update({photos});
+}
 
-const SK="pdi-snags-v2";
+async function deleteMedia(snagId,photo){
+  if(photo.docId){try{await mediaCol().doc(photo.docId).delete()}catch(e){}}
+  const snap=await snagCol().doc(String(snagId)).get();
+  const photos=(snap.data()?.photos||[]).filter(p=>p.ts!==photo.ts);
+  await snagCol().doc(String(snagId)).update({photos});
+}
 
-// ─── MAIN APP ─────────────────────────────────────────────
+async function loadPhotoData(photos){
+  const loaded=[];
+  for(const p of (photos||[])){
+    if(p.docId){
+      try{const d=await mediaCol().doc(p.docId).get();if(d.exists)loaded.push({...p,data:d.data().data})}catch(e){}
+    }
+  }
+  return loaded;
+}
+
+// ━━━ MAIN APP ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 function App(){
-  const [snags,setSnags]=useState(()=>{
-    try{const s=localStorage.getItem(SK);if(s){const p=JSON.parse(s);if(p.length===91)return p}}catch(e){}
-    return buildSeed();
-  });
+  const [snags,setSnags]=useState([]);
+  const [loaded,setLoaded]=useState(false);
   const [tab,setTab]=useState("dashboard");
   const [selId,setSelId]=useState(null);
   const [selRoom,setSelRoom]=useState(null);
@@ -265,10 +330,41 @@ function App(){
   const [fComp,setFComp]=useState("All");
   const [showExport,setShowExport]=useState(false);
 
-  const save=useCallback(u=>{setSnags(u);localStorage.setItem(SK,JSON.stringify(u))},[]);
-  const update=useCallback((id,ch)=>{const u=snags.map(s=>s.id===id?{...s,...ch}:s);save(u)},[snags,save]);
-  const addNote=useCallback((id,text)=>{const d=new Date().toISOString().slice(0,10);const u=snags.map(s=>s.id===id?{...s,notes:[{date:d,text},...s.notes]}:s);save(u)},[snags,save]);
-  const resetAll=useCallback(()=>{if(confirm("Reset all data to original inspection report?")){save(buildSeed())}},[save]);
+  // Real-time Firestore listener
+  useEffect(()=>{
+    let unsubscribe;
+    (async()=>{
+      await seedIfNeeded();
+      unsubscribe=snagCol().orderBy("id").onSnapshot(snap=>{
+        const items=snap.docs.map(d=>d.data());
+        setSnags(items);
+        setLoaded(true);
+      });
+    })();
+    return()=>{if(unsubscribe)unsubscribe()};
+  },[]);
+
+  const update=useCallback(async(id,ch)=>{
+    // Optimistic update
+    setSnags(prev=>prev.map(s=>s.id===id?{...s,...ch}:s));
+    await updateSnagDoc(id,ch);
+  },[]);
+
+  const addNote=useCallback(async(id,text)=>{
+    const d=new Date().toISOString().slice(0,10);
+    const snag=snags.find(s=>s.id===id);
+    const notes=[{date:d,text},...(snag?.notes||[])];
+    setSnags(prev=>prev.map(s=>s.id===id?{...s,notes}:s));
+    await updateSnagDoc(id,{notes});
+  },[snags]);
+
+  const resetAll=useCallback(async()=>{
+    if(!confirm("Reset all data to original inspection report?"))return;
+    const seed=buildSeed();
+    const batch=db.batch();
+    seed.forEach(s=>{batch.set(snagCol().doc(String(s.id)),s)});
+    await batch.commit();
+  },[]);
 
   const actionable=useMemo(()=>snags.filter(s=>s.severity!=="Info"),[snags]);
   const stats=useMemo(()=>{
@@ -294,8 +390,7 @@ function App(){
   },[snags]);
 
   const sel=selId?snags.find(s=>s.id===selId):null;
-
-  // Detail view
+  if(!loaded)return <div className="spinner">Loading snags...</div>;
   if(sel)return <Detail snag={sel} onBack={()=>setSelId(null)} onUpdate={update} onAddNote={addNote}/>;
 
   // Export
@@ -306,10 +401,14 @@ function App(){
     const full=`🏠 PDI Snag Report — Flat H-802\n${new Date().toLocaleDateString()}\n${open.length} items pending\n\n${txt}`;
     return(
       <div className="container">
-        <div className="header"><button onClick={()=>setShowExport(false)}>{Ic.back}</button><h2>Export Summary</h2>
-          <button onClick={()=>{navigator.clipboard?.writeText(full);alert("Copied!")}} style={{color:"var(--blue)"}}>{Ic.share}</button>
+        <div className="header"><button onClick={()=>setShowExport(false)}>{Ic.back}</button><h2>Share with Builder</h2></div>
+        <div className="content" style={{padding:16}}>
+          <div className="card">
+            <p style={{fontSize:12,color:"var(--text3)",marginBottom:10}}>Copy the summary below and send via WhatsApp or email.</p>
+            <button onClick={()=>{navigator.clipboard?.writeText(full);alert("Copied!")}} className="save-btn" style={{width:"100%",marginBottom:12}}>Copy to Clipboard</button>
+            <pre className="export-text">{full}</pre>
+          </div>
         </div>
-        <div className="content" style={{padding:16}}><pre className="export-text">{full}</pre></div>
       </div>
     );
   }
@@ -338,7 +437,10 @@ function App(){
     <div className="container">
       <div className="topbar">
         <div><h1>PDI Snag Tracker</h1><p>Flat H-802, 7 PD</p></div>
-        <button className="icon-btn" onClick={()=>setShowExport(true)} style={{color:"var(--blue)"}}>{Ic.share}</button>
+        <div style={{display:"flex",gap:4}}>
+          <button className="icon-btn" onClick={()=>setShowExport(true)} style={{color:"var(--blue)"}}>{Ic.share}</button>
+          <button className="icon-btn" onClick={()=>auth.signOut()} style={{color:"var(--text4)"}} title="Sign out">{Ic.logout}</button>
+        </div>
       </div>
       <div className="content">
         {tab==="dashboard"&&<Dashboard stats={stats} snags={actionable} roomSnags={roomSnags} onRoom={setSelRoom} onReset={resetAll}/>}
@@ -354,12 +456,9 @@ function App(){
   );
 }
 
-// ─── DASHBOARD ────────────────────────────────────────────
+// ━━━ DASHBOARD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 function Dashboard({stats,snags,roomSnags,onRoom,onReset}){
-  const sevCounts=useMemo(()=>{
-    const c={Critical:0,Major:0,Minor:0,Cosmetic:0};
-    snags.forEach(s=>{if(s.status!=="Accepted"&&c[s.severity]!==undefined)c[s.severity]++});return c;
-  },[snags]);
+  const sevCounts=useMemo(()=>{const c={Critical:0,Major:0,Minor:0,Cosmetic:0};snags.forEach(s=>{if(s.status!=="Accepted"&&c[s.severity]!==undefined)c[s.severity]++});return c},[snags]);
   return(
     <div style={{padding:16}}>
       <div className="card">
@@ -370,34 +469,24 @@ function Dashboard({stats,snags,roomSnags,onRoom,onReset}){
             <span style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",fontSize:11,fontWeight:600,color:"var(--green)"}}>{stats.resolved}/{stats.total}</span>
           </div>
         </div>
-        <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
-          {STATUSES.map(st=><span key={st} className="badge" style={{background:ST_COL[st]+"18",color:ST_COL[st]}}>{st}: {stats[st]||0}</span>)}
-        </div>
+        <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>{STATUSES.map(st=><span key={st} className="badge" style={{background:ST_COL[st]+"18",color:ST_COL[st]}}>{st}: {stats[st]||0}</span>)}</div>
       </div>
+      <div className="dash-grid">
       <div className="card">
         <p style={{fontSize:13,fontWeight:600,marginBottom:10}}>Pending by Severity</p>
-        {Object.entries(sevCounts).map(([sv,n])=>(
-          <div key={sv} style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
-            <span style={{width:8,height:8,borderRadius:4,background:SV_COL[sv],flexShrink:0}}/>
-            <span style={{fontSize:13,color:"var(--text2)",flex:1}}>{sv}</span>
-            <span style={{fontSize:13,fontWeight:600}}>{n}</span>
-            <div style={{width:80,height:6,background:"var(--border)",borderRadius:3}}><div style={{width:`${stats.total?(n/stats.total*100):0}%`,height:6,background:SV_COL[sv],borderRadius:3}}/></div>
-          </div>
-        ))}
+        {Object.entries(sevCounts).map(([sv,n])=>(<div key={sv} style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}><span style={{width:8,height:8,borderRadius:4,background:SV_COL[sv],flexShrink:0}}/><span style={{fontSize:13,color:"var(--text2)",flex:1}}>{sv}</span><span style={{fontSize:13,fontWeight:600}}>{n}</span><div style={{width:80,height:6,background:"var(--border)",borderRadius:3}}><div style={{width:`${stats.total?(n/stats.total*100):0}%`,height:6,background:SV_COL[sv],borderRadius:3}}/></div></div>))}
       </div>
       <div className="card">
         <p style={{fontSize:13,fontWeight:600,marginBottom:10}}>Rooms — Most Pending</p>
-        {Object.entries(roomSnags).filter(([,r])=>r.total>0).sort((a,b)=>(b[1].total-b[1].resolved)-(a[1].total-a[1].resolved)).slice(0,6).map(([name,r])=>{
-          const p=r.total-r.resolved;
-          return(<button key={name} onClick={()=>onRoom(name)} style={{display:"flex",alignItems:"center",width:"100%",padding:"8px 0",gap:8,textAlign:"left"}}><span style={{fontSize:13,color:"var(--text2)",flex:1}}>{name}</span><span style={{fontSize:12,color:p>0?"var(--red)":"var(--green)",fontWeight:600}}>{p} pending</span><span style={{fontSize:11,color:"var(--text4)"}}>/ {r.total}</span></button>);
-        })}
+        {Object.entries(roomSnags).filter(([,r])=>r.total>0).sort((a,b)=>(b[1].total-b[1].resolved)-(a[1].total-a[1].resolved)).slice(0,6).map(([name,r])=>{const p=r.total-r.resolved;return(<button key={name} onClick={()=>onRoom(name)} style={{display:"flex",alignItems:"center",width:"100%",padding:"8px 0",gap:8,textAlign:"left"}}><span style={{fontSize:13,color:"var(--text2)",flex:1}}>{name}</span><span style={{fontSize:12,color:p>0?"var(--red)":"var(--green)",fontWeight:600}}>{p} pending</span><span style={{fontSize:11,color:"var(--text4)"}}>/ {r.total}</span></button>)})}
+      </div>
       </div>
       <button onClick={onReset} style={{width:"100%",padding:12,border:"1px solid var(--border)",borderRadius:8,fontSize:12,color:"var(--text4)",marginTop:4}}>Reset to original inspection data</button>
     </div>
   );
 }
 
-// ─── LIST VIEW ────────────────────────────────────────────
+// ━━━ LIST VIEW ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 function ListView({snags,search,onSearch,fStatus,onFStatus,fSev,onFSev,fComp,onFComp,onSelect}){
   const [showF,setShowF]=useState(false);
   return(
@@ -417,66 +506,25 @@ function ListView({snags,search,onSearch,fStatus,onFStatus,fSev,onFSev,fComp,onF
     </div>
   );
 }
-function FilterRow({label,value,onChange,options,colors={}}){
-  return(<div className="filter-row"><span className="label">{label}</span>{options.map(o=>(<button key={o} onClick={()=>onChange(o)} className={`chip ${value===o?"active":""}`} style={{background:value===o?(colors[o]?colors[o]+"20":"#3b82f620"):"var(--bg3)",color:value===o?(colors[o]||"var(--blue)"):"var(--text3)"}}>{o}</button>))}</div>);
-}
+function FilterRow({label,value,onChange,options,colors={}}){return(<div className="filter-row"><span className="label">{label}</span>{options.map(o=>(<button key={o} onClick={()=>onChange(o)} className={`chip ${value===o?"active":""}`} style={{background:value===o?(colors[o]?colors[o]+"20":"#3b82f620"):"var(--bg3)",color:value===o?(colors[o]||"var(--blue)"):"var(--text3)"}}>{o}</button>))}</div>)}
+function SnagCard({snag,onTap}){return(<button className="snag-card" onClick={onTap}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:8}}><div style={{flex:1,minWidth:0}}><div style={{display:"flex",alignItems:"center",gap:6,marginBottom:3}}><span style={{fontSize:12,fontWeight:700,color:"var(--text4)"}}>#{snag.id}</span><span style={{fontSize:11,color:"var(--text3)"}}>{snag.location}</span></div><p style={{fontSize:14,lineHeight:1.3}}>{snag.analysis}</p><span style={{fontSize:11,color:"var(--text4)",marginTop:3,display:"block"}}>{snag.component}</span></div><div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:4,flexShrink:0}}><span className="badge" style={{background:ST_COL[snag.status]+"18",color:ST_COL[snag.status]}}>{snag.status}</span><span className="badge" style={{background:SV_COL[snag.severity]+"18",color:SV_COL[snag.severity]}}>{snag.severity}</span></div></div></button>)}
 
-// ─── SNAG CARD ────────────────────────────────────────────
-function SnagCard({snag,onTap}){
-  return(
-    <button className="snag-card" onClick={onTap}>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:8}}>
-        <div style={{flex:1,minWidth:0}}>
-          <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:3}}>
-            <span style={{fontSize:12,fontWeight:700,color:"var(--text4)"}}>#{snag.id}</span>
-            <span style={{fontSize:11,color:"var(--text3)"}}>{snag.location}</span>
-          </div>
-          <p style={{fontSize:14,lineHeight:1.3}}>{snag.analysis}</p>
-          <span style={{fontSize:11,color:"var(--text4)",marginTop:3,display:"block"}}>{snag.component}</span>
-        </div>
-        <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:4,flexShrink:0}}>
-          <span className="badge" style={{background:ST_COL[snag.status]+"18",color:ST_COL[snag.status]}}>{snag.status}</span>
-          <span className="badge" style={{background:SV_COL[snag.severity]+"18",color:SV_COL[snag.severity]}}>{snag.severity}</span>
-        </div>
-      </div>
-    </button>
-  );
-}
+// ━━━ ROOMS VIEW ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function RoomsView({roomSnags,onSelect}){return(<div style={{padding:16}}><div className="rooms-grid">{LOCATIONS.filter(l=>l!=="Dry Balcony").map(name=>{const r=roomSnags[name];if(!r||r.total===0)return null;const p=r.total-r.resolved;const pct=Math.round(r.resolved/r.total*100);return(<button key={name} className="room-card" onClick={()=>onSelect(name)}><div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}><div><p style={{fontSize:15,fontWeight:600}}>{name}</p>{ROOM_DIMS[name]&&<p style={{fontSize:11,color:"var(--text4)"}}>{ROOM_DIMS[name]} ft</p>}</div><span style={{fontSize:22,fontWeight:700,color:pct===100?"var(--green)":"var(--blue)"}}>{pct}%</span></div><div className="progress-bar"><div className="progress-fill" style={{width:`${pct}%`,background:pct===100?"var(--green)":"var(--blue)"}}/></div><div style={{display:"flex",gap:12,fontSize:12,marginTop:6}}><span style={{color:"var(--text3)"}}>{r.total} total</span><span style={{color:"var(--green)"}}>{r.resolved} done</span>{p>0&&<span style={{color:"var(--red)"}}>{p} pending</span>}</div></button>)})}</div></div>)}
 
-// ─── ROOMS VIEW ───────────────────────────────────────────
-function RoomsView({roomSnags,onSelect}){
-  return(
-    <div style={{padding:16}}>
-      {LOCATIONS.filter(l=>l!=="Dry Balcony").map(name=>{
-        const r=roomSnags[name];if(!r||r.total===0)return null;
-        const p=r.total-r.resolved;const pct=Math.round(r.resolved/r.total*100);
-        return(
-          <button key={name} className="room-card" onClick={()=>onSelect(name)}>
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
-              <div><p style={{fontSize:15,fontWeight:600}}>{name}</p>{ROOM_DIMS[name]&&<p style={{fontSize:11,color:"var(--text4)"}}>{ROOM_DIMS[name]} ft</p>}</div>
-              <span style={{fontSize:22,fontWeight:700,color:pct===100?"var(--green)":"var(--blue)"}}>{pct}%</span>
-            </div>
-            <div className="progress-bar"><div className="progress-fill" style={{width:`${pct}%`,background:pct===100?"var(--green)":"var(--blue)"}}/></div>
-            <div style={{display:"flex",gap:12,fontSize:12,marginTop:6}}><span style={{color:"var(--text3)"}}>{r.total} total</span><span style={{color:"var(--green)"}}>{r.resolved} done</span>{p>0&&<span style={{color:"var(--red)"}}>{p} pending</span>}</div>
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-// ─── DETAIL VIEW ──────────────────────────────────────────
-function Detail({snag,onBack,onUpdate,onAddNote}){
+// ━━━ DETAIL VIEW ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function Detail({snag,onUpdate,onBack,onAddNote}){
   const [noteText,setNoteText]=useState("");
   const [editing,setEditing]=useState(false);
   const [editRemedy,setEditRemedy]=useState(snag.remedy);
-  const [userPhotos,setUserPhotos]=useState([]);
   const [lightbox,setLightbox]=useState(null);
-  const fileRef=useRef();
+  const [uploading,setUploading]=useState(false);
+  const [loadedPhotos,setLoadedPhotos]=useState([]);
+  const captureRef=useRef();
+  const uploadRef=useRef();
 
-  useEffect(()=>{setEditRemedy(snag.remedy);loadPhotos()},[snag.id]);
-
-  async function loadPhotos(){try{const p=await getPhotos(snag.id);setUserPhotos(p)}catch(e){setUserPhotos([])}}
+  useEffect(()=>{setEditRemedy(snag.remedy)},[snag.id,snag.remedy]);
+  useEffect(()=>{loadPhotoData(snag.photos).then(setLoadedPhotos)},[snag.photos]);
 
   const handleStatusChange=st=>{
     const ch={status:st};const d=new Date().toISOString().slice(0,10);
@@ -486,19 +534,17 @@ function Detail({snag,onBack,onUpdate,onAddNote}){
     onUpdate(snag.id,ch);
   };
   const handleNote=()=>{if(!noteText.trim())return;onAddNote(snag.id,noteText.trim());setNoteText("")};
-  const handlePhoto=async e=>{
+
+  const handleMedia=async(e)=>{
     const file=e.target.files?.[0];if(!file)return;
-    const reader=new FileReader();
-    reader.onload=async()=>{
-      const compressed=await compressImage(reader.result,800,0.7);
-      const pid=Date.now();
-      await savePhoto(snag.id,pid,compressed);
-      await loadPhotos();
-    };
-    reader.readAsDataURL(file);
+    if(!file.type.startsWith("image/")){alert("Only images supported");e.target.value="";return}
+    if(file.size>10*1024*1024){alert("Image must be under 10MB");e.target.value="";return}
+    setUploading(true);
+    try{await uploadMedia(snag.id,file)}catch(err){alert("Upload failed: "+err.message)}
+    setUploading(false);
     e.target.value="";
   };
-  const handleDeletePhoto=async key=>{if(confirm("Delete this photo?")){await deletePhoto(key);await loadPhotos()}};
+  const handleDeleteMedia=async(photo)=>{if(confirm("Delete this photo?")){await deleteMedia(snag.id,photo)}};
 
   const imgSrc=`images/snag-${String(snag.id).padStart(2,"0")}.jpg`;
 
@@ -509,29 +555,20 @@ function Detail({snag,onBack,onUpdate,onAddNote}){
         <div style={{padding:16}}>
           <p style={{fontSize:11,color:"var(--text4)",marginBottom:8}}>{snag.location} · Reported {snag.dateReported}</p>
 
-          {/* Inspection Photo */}
-          <img src={imgSrc} className="snag-img" alt={`Snag #${snag.id}`} onClick={()=>setLightbox(imgSrc)} style={{marginBottom:12,maxHeight:300}}
-            onError={e=>{e.target.style.display="none"}}/>
-
-          {/* Finding */}
-          <div className="card">
-            <p className="section-label">Finding</p>
-            <p style={{fontSize:15,lineHeight:1.4}}>{snag.analysis}</p>
-          </div>
-
-          {/* Remedy */}
+          <div className="detail-top">
+          <img src={imgSrc} className="snag-img" alt={`Snag #${snag.id}`} onClick={()=>setLightbox({type:"image",src:imgSrc})} style={{marginBottom:12,maxHeight:300}} onError={e=>{e.target.style.display="none"}}/>
+          <div className="detail-info">
+          <div className="card"><p className="section-label">Finding</p><p style={{fontSize:15,lineHeight:1.4}}>{snag.analysis}</p></div>
           <div className="card">
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:4}}>
               <p className="section-label" style={{marginBottom:0}}>Remedy</p>
               <button onClick={()=>setEditing(!editing)} style={{color:"var(--blue)"}}>{Ic.edit}</button>
             </div>
-            {editing?(
-              <div style={{display:"flex",gap:6}}><input className="input-field" value={editRemedy} onChange={e=>setEditRemedy(e.target.value)} placeholder="Enter remedy..."/>
-              <button className="save-btn" onClick={()=>{onUpdate(snag.id,{remedy:editRemedy});setEditing(false)}}>Save</button></div>
-            ):(<p style={{fontSize:14,color:snag.remedy?"var(--text)":"var(--text4)"}}>{snag.remedy||"No remedy specified"}</p>)}
+            {editing?(<div style={{display:"flex",gap:6}}><input className="input-field" value={editRemedy} onChange={e=>setEditRemedy(e.target.value)} placeholder="Enter remedy..."/><button className="save-btn" onClick={()=>{onUpdate(snag.id,{remedy:editRemedy});setEditing(false)}}>Save</button></div>):(<p style={{fontSize:14,color:snag.remedy?"var(--text)":"var(--text4)"}}>{snag.remedy||"No remedy specified"}</p>)}
+          </div>
+          </div>
           </div>
 
-          {/* Status + Severity */}
           <div className="card">
             <p className="section-label">Status</p>
             <div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:12}}>
@@ -543,7 +580,6 @@ function Detail({snag,onBack,onUpdate,onAddNote}){
             </div>
           </div>
 
-          {/* Timeline */}
           <div className="card">
             <p className="section-label">Timeline</p>
             <DateRow label="Reported" date={snag.dateReported}/>
@@ -551,56 +587,61 @@ function Detail({snag,onBack,onUpdate,onAddNote}){
             <DateRow label="Verified" date={snag.dateVerified} editable onEdit={d=>onUpdate(snag.id,{dateVerified:d})}/>
           </div>
 
-          {/* User Photos */}
           <div className="card">
             <p className="section-label">Your Photos</p>
             <div className="user-photos">
-              {userPhotos.map(p=>(
-                <div key={p.key} style={{position:"relative"}}>
-                  <img src={p.data} className="user-photo-thumb" onClick={()=>setLightbox(p.data)} alt="User photo"/>
-                  <button onClick={()=>handleDeletePhoto(p.key)} style={{position:"absolute",top:-6,right:-6,width:20,height:20,borderRadius:10,background:"var(--red)",color:"#fff",fontSize:12,display:"flex",alignItems:"center",justifyContent:"center"}}>×</button>
+              {loadedPhotos.map(p=>(
+                <div key={p.ts} style={{position:"relative"}}>
+                  <img src={p.data} className="user-photo-thumb" onClick={()=>setLightbox({type:"image",src:p.data})} alt="User photo" style={{cursor:"pointer"}}/>
+                  <button onClick={()=>handleDeleteMedia(p)} style={{position:"absolute",top:-6,right:-6,width:20,height:20,borderRadius:10,background:"var(--red)",color:"#fff",fontSize:12,display:"flex",alignItems:"center",justifyContent:"center"}}>×</button>
                 </div>
               ))}
-              <button className="photo-add-btn" onClick={()=>fileRef.current?.click()}>+</button>
-              <input ref={fileRef} type="file" accept="image/*" capture="environment" onChange={handlePhoto} style={{display:"none"}}/>
+              {uploading&&<div className="photo-add-btn" style={{color:"var(--blue)",fontSize:12}}>...</div>}
+              <button className="photo-add-btn" onClick={()=>captureRef.current?.click()} title="Camera">{Ic.camera}</button>
+              <button className="photo-add-btn" onClick={()=>uploadRef.current?.click()} title="Upload">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </button>
+              <input ref={captureRef} type="file" accept="image/*" capture="environment" onChange={handleMedia} style={{display:"none"}}/>
+              <input ref={uploadRef} type="file" accept="image/*" onChange={handleMedia} style={{display:"none"}}/>
             </div>
-            <p style={{fontSize:11,color:"var(--text4)",marginTop:6}}>Tap + to capture or upload a photo</p>
+            <p style={{fontSize:11,color:"var(--text4)",marginTop:6}}>Syncs across all your devices automatically</p>
           </div>
 
-          {/* Notes */}
           <div className="card">
             <p className="section-label">Notes</p>
             <div style={{display:"flex",gap:6,marginBottom:8}}>
               <input className="input-field" value={noteText} onChange={e=>setNoteText(e.target.value)} placeholder="Add a note..." onKeyDown={e=>{if(e.key==="Enter")handleNote()}}/>
               <button className="save-btn" onClick={handleNote}>Add</button>
             </div>
-            {snag.notes.length===0&&<p style={{fontSize:13,color:"var(--text4)"}}>No notes yet</p>}
-            {snag.notes.map((n,i)=>(<div key={i} style={{padding:"8px 0",borderTop:i>0?"1px solid var(--bg3)":"none"}}><p style={{fontSize:11,color:"var(--text4)"}}>{n.date}</p><p style={{fontSize:13,color:"var(--text2)",lineHeight:1.4,marginTop:2}}>{n.text}</p></div>))}
+            {(!snag.notes||snag.notes.length===0)&&<p style={{fontSize:13,color:"var(--text4)"}}>No notes yet</p>}
+            {(snag.notes||[]).map((n,i)=>(<div key={i} style={{padding:"8px 0",borderTop:i>0?"1px solid var(--bg3)":"none"}}><p style={{fontSize:11,color:"var(--text4)"}}>{n.date}</p><p style={{fontSize:13,color:"var(--text2)",lineHeight:1.4,marginTop:2}}>{n.text}</p></div>))}
           </div>
         </div>
       </div>
 
-      {/* Lightbox */}
-      {lightbox&&<div className="lightbox" onClick={()=>setLightbox(null)}><button onClick={()=>setLightbox(null)}>{Ic.x}</button><img src={lightbox} alt="Full size"/></div>}
+      {lightbox&&<div className="lightbox" onClick={()=>setLightbox(null)}>
+        <button onClick={()=>setLightbox(null)}>{Ic.x}</button>
+        <img src={typeof lightbox==="string"?lightbox:lightbox.src} alt="Full size" style={{maxWidth:"95%",maxHeight:"90%",objectFit:"contain",borderRadius:4}}/>
+      </div>}
     </div>
   );
 }
 
 function DateRow({label,date,editable,onEdit}){
   const [em,setEm]=useState(false);
-  return(
-    <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"4px 0"}}>
-      <span style={{fontSize:13,color:"var(--text3)"}}>{label}</span>
-      {em?<input type="date" defaultValue={date||""} autoFocus onChange={e=>{onEdit(e.target.value||null);setEm(false)}} onBlur={()=>setEm(false)} style={{fontSize:13,border:"1px solid var(--border)",borderRadius:6,padding:"4px 8px"}}/>:
-      <div style={{display:"flex",alignItems:"center",gap:6}}>
-        <span style={{fontSize:13,color:date?"var(--text)":"var(--border)",fontWeight:date?500:400}}>{date||"—"}</span>
-        {editable&&<button onClick={()=>setEm(true)} style={{color:"var(--blue)",fontSize:11}}>edit</button>}
-      </div>}
-    </div>
-  );
+  return(<div style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"4px 0"}}><span style={{fontSize:13,color:"var(--text3)"}}>{label}</span>{em?<input type="date" defaultValue={date||""} autoFocus onChange={e=>{onEdit(e.target.value||null);setEm(false)}} onBlur={()=>setEm(false)} style={{fontSize:13,border:"1px solid var(--border)",borderRadius:6,padding:"4px 8px"}}/>:<div style={{display:"flex",alignItems:"center",gap:6}}><span style={{fontSize:13,color:date?"var(--text)":"var(--border)",fontWeight:date?500:400}}>{date||"—"}</span>{editable&&<button onClick={()=>setEm(true)} style={{color:"var(--blue)",fontSize:11}}>edit</button>}</div>}</div>);
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+// ━━━ AUTH WRAPPER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function Root(){
+  const [user,setUser]=useState(undefined);
+  useEffect(()=>{return auth.onAuthStateChanged(u=>setUser(u))},[]);
+  if(user===undefined)return <div className="spinner">Loading...</div>;
+  if(!user)return <LoginScreen/>;
+  return <App/>;
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Root/>);
 </script>
 </body>
 </html>
